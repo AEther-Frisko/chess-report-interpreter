@@ -3,7 +3,7 @@
 
 import sys
 
-
+#   Stores all player data that is read in from a file.
 class Player:
     def __init__(self, seed, name, cfcID, cfcRating, results):
         self.seed = seed
@@ -18,6 +18,36 @@ class Player:
                 \nCFC ID:     {self.cfcID}\
                 \nCFC Rating: {self.cfcRating}\
                 \nResults:    {self.results} \n"
+    
+    #   Takes in a dict of all players.
+    #   Prints a table of round results for the player, in a
+    #   more readable format (ie. converting seed numbers to
+    #   player names).
+    def displayReport(self, players: dict):
+        print("  Round  |  Result  |  Opponent  |")
+        for result in self.results:
+            round = self.results.index(result) + 1
+            res = "?"
+            opp = "?"
+            
+            # determine result
+            if "W" in result:
+                res = "Win"
+            elif "L" in result:
+                res = "Loss"
+            elif "D" in result:
+                res = "Draw"
+            else:
+                print("This shouldn't be possible.")
+            
+            # determine opponent
+            seed = result[1:]
+            for player in players.values():
+                if player.seed == seed:
+                    opp = player.name
+
+            # display round data
+            print(f"  {round:<9}|  {res:<10}|  {opp:<12}")
 
 
 #   Takes in a filename, and populates a dict with
@@ -53,35 +83,9 @@ def parseLine(line: str):
     return p
 
 
-def displayReport(p: Player, players: dict):
-    print("  Round  |  Result  |  Opponent  |")
-    for result in p.results:
-        round = p.results.index(result) + 1
-        res = "?"
-        opp = "?"
-        
-        # determine result
-        if "W" in result:
-            res = "Win"
-        elif "L" in result:
-            res = "Loss"
-        elif "D" in result:
-            res = "Draw"
-        else:
-            print("This shouldn't be possible.")
-        
-        # determine opponent
-        seed = result[1:]
-        for player in players.values():
-            if player.seed == seed:
-                opp = player.name
-
-        # display round data
-        print(f"  {round:<9}|  {res:<10}|  {opp:<12}")
-
-
 #   --- Main program ---
-filename = "data.tms"   # TODO: switch this out for arg parsing
+print("Please enter the data file you wish to parse: ")
+filename = input()   # TODO: switch this out for arg parsing
 players = readFile(filename)
 
 while(True):
@@ -99,7 +103,7 @@ while(True):
             key = input()
             if key in players.keys():
                 print(players[key])
-                displayReport(players[key], players)
+                players[key].displayReport(players)
             else:
                 print("This seed does not exist.")
         case 3:
