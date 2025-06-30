@@ -1,0 +1,7 @@
+- change display to player cards
+- allow user to display single player/select player
+- input validation
+- arg parse
+- html output of player card
+- csv.dictReader
+- unit tests
