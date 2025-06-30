@@ -1,2 +1,5 @@
 # do not include any real data files
 *.tms
+
+# ignore the pycache
+__pycache__/
