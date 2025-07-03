@@ -8,7 +8,7 @@ authors = []
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[dependencies] = []
+[dependencies]
 
 [project.optional_dependencies]
 dev = [
@@ -22,7 +22,7 @@ line-length = 88
 profile = "black"
 line-length = 88
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "pep257"
 
 [tool.ruff.lint.isort]
