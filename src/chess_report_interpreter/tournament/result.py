@@ -20,11 +20,11 @@ class ResultEnum(Enum):
         return self.value
 
 
-class ChessTournamentResult:
+class ChessResult:
     """A class representing the result of a chess tournament for a player."""
 
     def __init__(self, result: str):
-        """Initializes a ChessTournamentResult instance."""
+        """Initializes a ChessResult instance."""
         # Extract the result code as the first character.
         # The rest of the string should be the opponent's seed number.
         # Example: "W1" means a win against seed 1.
@@ -39,5 +39,5 @@ class ChessTournamentResult:
             self.vs_seed = None
 
     def __str__(self):
-        """Returns a string representation of the ChessTournamentResult."""
+        """Returns a string representation of the ChessResult."""
         return f"Vs Seed: {self.vs_seed}, Result: {ResultEnum.from_code(self.result)}"
