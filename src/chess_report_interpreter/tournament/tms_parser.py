@@ -1,5 +1,6 @@
 """Module for reading tms files and parsing the extracted data."""
 
+from tournament.result import ChessResult
 from tournament.player import ChessPlayer
 
 
@@ -26,13 +27,14 @@ class tmsParser:
         players: dict[int, ChessPlayer] = {}
         for line in lines:
             data = line.split("	")
-            seed = data[0]
+            seed = int(data[0])
             name = data[1]
             cfcID = data[2]
             cfcRating = data[3]
             results = data[4:]
             del results[-1]
+            parsed_results = [ChessResult(res) for res in results]
 
-            p = ChessPlayer(seed, name, cfcID, cfcRating, results)
-            players.update({p.seed: p})
+            p = ChessPlayer(seed, name, cfcID, cfcRating, parsed_results)
+            players[p.seed] = p
         return players

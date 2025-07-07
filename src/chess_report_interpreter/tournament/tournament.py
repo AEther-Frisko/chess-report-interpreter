@@ -1,5 +1,6 @@
 """Module for compiling all player data for a tournament."""
 
+from tournament.result import ResultEnum
 from tournament.player import ChessPlayer
 
 
@@ -18,6 +19,20 @@ class ChessTournament:
         """Returns a Player via the name value."""
         for player in self.players.values():
             if player.name.lower() == name.lower():
-                return player.name
-            else:
-                return "Not Found"
+                return player
+        return None
+    
+    def display_report(self, seed: int):
+        """Displays a report of a player's tournament results."""
+        player = self.get_player(seed)
+        round = 0
+        for result in player.results:
+            round += 1
+            outcome = ResultEnum.from_code(result.result)
+            opponent = self.get_player(result.vs_seed)
+            print(
+                f"Round:    {round}\n"
+                f"Opponent: {opponent.name}\n"
+                f"Result:   {outcome}\n"
+                "----------\n"
+                )
