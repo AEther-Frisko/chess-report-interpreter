@@ -1,6 +1,6 @@
 """The player module defines individual players in a chess tournament."""
 
-from src.chess_report_interpreter.tournament.result import ChessTournamentResult
+from tournament.result import ChessResult
 
 
 class ChessPlayer:
@@ -12,7 +12,7 @@ class ChessPlayer:
         name: str,
         cfc_id: int,
         cfc_rating: int,
-        results: list[ChessTournamentResult],
+        results: list[ChessResult],
     ):
         """Initializes a Player instance."""
         self.seed = seed_no
