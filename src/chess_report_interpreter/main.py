@@ -1,13 +1,18 @@
 """Main entry point for the chess report interpreter application."""
 
 import sys
+import argparse
 from tournament.tms_parser import tmsParser
 from tournament.tournament import ChessTournament
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("file", help = "reads in the file you specify here")
+    args = parser.parse_args()
+    filename = args.file
+    
     # Example usage
-    filename = "data.tms.sample"
     lines = tmsParser.read_file("data\\" + filename)
     players: dict = tmsParser.parse_lines(lines)
     tournament = ChessTournament(players)
