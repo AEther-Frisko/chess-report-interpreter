@@ -41,3 +41,7 @@ class ChessTournamentResult:
     def __str__(self):
         """Returns a string representation of the ChessTournamentResult."""
         return f"Vs Seed: {self.vs_seed}, Result: {ResultEnum.from_code(self.result)}"
+
+    def get_short_result(self) -> str:
+        """Returns a short string representation of the result."""
+        return f"{self.result.upper()}{self.vs_seed}" if self.vs_seed is not None else self.result
