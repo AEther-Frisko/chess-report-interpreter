@@ -5,17 +5,19 @@ from tournament.tms_parser import tmsParser
 from tournament.tournament import ChessTournament
 
 
-if __name__ == "__main__":
+def main():
     # Example usage
-    lines = tmsParser.read_file("data.tms.sample")
+    filename = "data.tms.sample"
+    lines = tmsParser.read_file("data\\" + filename)
     players: dict = tmsParser.parse_lines(lines)
     tournament = ChessTournament(players)
     
     while(True):
         print("Would you like to: " \
-            "\n1) See all player data"
+            "\n1) See all players"
             "\n2) See a specific player's report"
-            "\n3) quit")
+            "\n3) See the overall tournament results"
+            "\n4) quit")
         
         match int(input()):
             case 1:
@@ -32,8 +34,15 @@ if __name__ == "__main__":
                     print("This user could not be found.")
             
             case 3:
+                print("Oops I haven't done this yet")
+
+            case 4:
                 print("Exiting program...")
                 sys.exit()
             
             case _:
                 print("Invalid input, please try again.")
+
+
+if __name__ == "__main__":
+    main()
