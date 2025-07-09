@@ -14,11 +14,10 @@ class tmsParser:
         try:
             file = open(filename)
             lines = file.readlines()
+            file.close()
             return lines
         except FileNotFoundError:
             print("ERROR: This file does not exist or cannot be found.")
-        finally:
-            file.close()
         
 
     @staticmethod
@@ -29,8 +28,8 @@ class tmsParser:
             data = line.split("	")
             seed = int(data[0])
             name = data[1]
-            cfcID = data[2]
-            cfcRating = data[3]
+            cfcID = int(data[2])
+            cfcRating = int(data[3])
             results = data[4:]
             del results[-1]
             parsed_results = [ChessResult(res) for res in results]
