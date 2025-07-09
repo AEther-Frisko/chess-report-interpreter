@@ -1,6 +1,7 @@
 from src.chess_report_interpreter.tournament.result import ChessResult
 from src.chess_report_interpreter.tournament.result import ResultEnum
 
+
 def test_proper_win():
     result = ChessResult("W1")
     assert result.result == "W" and result.vs_seed == 1
@@ -32,6 +33,21 @@ def test_missing_result():
 def test_completely_invalid():
     result = ChessResult("This is not the right format!1!!")
     assert result.result == None and result.vs_seed == None
+
+def test_str_output_win():
+    result = ChessResult("W6")
+    output = str(result)
+    assert "Vs Seed: 6, Result: Win" in output
+
+def test_str_output_loss():
+    result = ChessResult("L7")
+    output = str(result)
+    assert "Vs Seed: 7, Result: Loss" in output
+
+def test_str_output_draw():
+    result = ChessResult("D7")
+    output = str(result)
+    assert "Vs Seed: 7, Result: Draw" in output
 
 def test_valid_win_enum():
     result = ResultEnum.from_code("W")
