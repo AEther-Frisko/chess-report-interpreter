@@ -1,5 +1,4 @@
-from src.chess_report_interpreter.tournament.result import ChessResult
-from src.chess_report_interpreter.tournament.result import ResultEnum
+from chess_report_interpreter.tournament.result import ChessResult, ResultEnum
 
 
 def test_proper_win():

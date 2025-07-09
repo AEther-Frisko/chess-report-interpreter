@@ -1,5 +1,5 @@
 from chess_report_interpreter.tournament.result import ChessResult
-from src.chess_report_interpreter.tournament.player import ChessPlayer
+from chess_report_interpreter.tournament.player import ChessPlayer
 
 
 def test_valid_initialization():
