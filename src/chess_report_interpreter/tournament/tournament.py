@@ -22,17 +22,12 @@ class ChessTournament:
                 return player
         return None
     
-    def display_report(self, seed: int):
-        """Displays a report of a player's tournament results."""
+    def create_report(self, seed: int):
+        """Creates a report of a player's tournament results."""
+        results: list[tuple[ResultEnum, str]] = []
         player = self.get_player(seed)
-        round = 0
         for result in player.results:
-            round += 1
             outcome = ResultEnum.from_code(result.result)
             opponent = self.get_player(result.vs_seed)
-            print(
-                f"Round:    {round}\n"
-                f"Opponent: {opponent.name}\n"
-                f"Result:   {outcome}\n"
-                "----------\n"
-                )
+            results.append((outcome, opponent.name))
+        return results
