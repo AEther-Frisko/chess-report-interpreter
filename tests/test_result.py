@@ -15,23 +15,23 @@ def test_proper_draw():
 
 def test_invalid_result():
     result = ChessResult("A4")
-    assert result.result == None and result.vs_seed == None
+    assert result.result is None and result.vs_seed is None
 
 def test_invalid_seed():
     result = ChessResult("WEEE")
-    assert result.result == "W" and result.vs_seed == None
+    assert result.result == "W" and result.vs_seed is None
 
 def test_missing_seed():
     result = ChessResult("L")
-    assert result.result == "L" and result.vs_seed == None
+    assert result.result == "L" and result.vs_seed is None
 
 def test_missing_result():
     result = ChessResult("5")
-    assert result.result == None and result.vs_seed == None
+    assert result.result is None and result.vs_seed is None
 
 def test_completely_invalid():
     result = ChessResult("This is not the right format!1!!")
-    assert result.result == None and result.vs_seed == None
+    assert result.result is None and result.vs_seed is None
 
 def test_str_output_win():
     result = ChessResult("W6")
@@ -50,16 +50,16 @@ def test_str_output_draw():
 
 def test_valid_win_enum():
     result = ResultEnum.from_code("W")
-    assert result == ResultEnum.WIN
+    assert result is ResultEnum.WIN
 
 def test_valid_loss_enum():
     result = ResultEnum.from_code("L")
-    assert result == ResultEnum.LOSS
+    assert result is ResultEnum.LOSS
 
 def test_valid_draw_enum():
     result = ResultEnum.from_code("D")
-    assert result == ResultEnum.DRAW
+    assert result is ResultEnum.DRAW
 
 def test_invalid_enum():
     result = ResultEnum.from_code("A")
-    assert result == None
+    assert result is None

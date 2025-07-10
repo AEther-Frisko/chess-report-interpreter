@@ -1,8 +1,8 @@
 """Module for displaying data related to the Tournament."""
 
-from tournament.player import ChessPlayer
-from tournament.result import ResultEnum
-from tournament.tournament import ChessTournament
+from .player import ChessPlayer
+from .result import ResultEnum
+from .tournament import ChessTournament
 
 
 class DataDisplay:

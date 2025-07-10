@@ -1,7 +1,7 @@
 """Module for analyzing and displaying the details of a ChessTournament."""
 
 from enum import Enum
-from tournament.tournament import ChessTournament
+from .tournament import ChessTournament
 
 
 class PointValueEnum(Enum):

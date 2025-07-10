@@ -1,7 +1,7 @@
 """Module for compiling all player data for a tournament."""
 
-from tournament.result import ResultEnum
-from tournament.player import ChessPlayer
+from .result import ResultEnum
+from .player import ChessPlayer
 
 
 class ChessTournament:

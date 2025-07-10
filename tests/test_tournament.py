@@ -42,7 +42,7 @@ def test_get_invalid_seed():
     tournament = ChessTournament(players)
     retrieved = tournament.get_player(10)
 
-    assert retrieved == None
+    assert retrieved is None
 
 def test_get_proper_name():
     p1 = ChessPlayer(1, "Guy, One", 100000, 1990, [ChessResult("W2"), ChessResult("W3")])
@@ -84,7 +84,7 @@ def test_get_invalid_name():
     tournament = ChessTournament(players)
     retrieved = tournament.get_player_by_name("not on this list")
 
-    assert retrieved == None
+    assert retrieved is None
 
 def test_create_valid_report():
     p1 = ChessPlayer(1, "Guy, One", 100000, 1990, [ChessResult("W2"), ChessResult("W3")])

@@ -12,7 +12,7 @@ def test_read_valid_file():
 def test_read_invalid_file():
     lines = tmsParser.read_file("not a file")
 
-    assert lines == None
+    assert lines is None
 
 def test_parse_lines():
     lines = tmsParser.read_file("data/data.tms.sample")

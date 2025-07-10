@@ -1,7 +1,7 @@
 """Module for reading tms files and parsing the extracted data."""
 
-from tournament.result import ChessResult
-from tournament.player import ChessPlayer
+from .result import ChessResult
+from .player import ChessPlayer
 
 
 class tmsParser:
