@@ -1,6 +1,6 @@
 """The player module defines individual players in a chess tournament."""
 
-from tournament.result import ChessResult
+from .result import ChessResult
 
 
 class ChessPlayer:

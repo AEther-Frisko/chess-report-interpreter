@@ -1,7 +1,7 @@
 """Module for compiling all player data for a tournament."""
 
-from tournament.result import ResultEnum
-from tournament.player import ChessPlayer
+from .result import ResultEnum
+from .player import ChessPlayer
 
 
 class ChessTournament:
@@ -21,7 +21,7 @@ class ChessTournament:
             if player.name.lower() == name.lower():
                 return player
         return None
-    
+
     def display_report(self, seed: int):
         """Displays a report of a player's tournament results."""
         player = self.get_player(seed)
@@ -35,4 +35,4 @@ class ChessTournament:
                 f"Opponent: {opponent.name}\n"
                 f"Result:   {outcome}\n"
                 "----------\n"
-                )
+            )
