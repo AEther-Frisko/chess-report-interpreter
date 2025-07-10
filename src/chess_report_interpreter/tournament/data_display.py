@@ -1,5 +1,6 @@
 """Module for displaying data related to the Tournament."""
 
+from .data_analyzer import PointValueEnum
 from .player import ChessPlayer
 from .result import ResultEnum
 from .tournament import ChessTournament
@@ -9,7 +10,7 @@ class DataDisplay:
     def display_leaderboard(top_players: list[tuple[int, float]], tournament: ChessTournament):
         """Displays the top three players of the tournament, according to their win/loss/draw scores."""
         
-        print("--- TOP PLAYERS ---")
+        print("--- TOP 3 PLAYERS ---")
         for seed, score in top_players:
             player = tournament.get_player(seed)
             print(
@@ -42,3 +43,29 @@ class DataDisplay:
             f"CFC Rating:   {player.cfc_rating}\n"
             "----------"
         )
+    
+    def display_round_overview(tournament: ChessTournament):
+        """Displays an overview of all games in the tournament as a crosstable."""
+
+        print("--- ROUND OVERVIEW ---")
+        players = list(tournament.players.values())
+        players.sort(key = lambda p: p.seed)
+
+        round_num = max(len(p.results) for p in players)
+        print(f"{'Player':<20} " + "  ".join(f"R{i+1}" for i in range(round_num)) + "  Total")
+        print("----------")
+
+        for player in players:
+            row = f"{str(player.seed):<2} {player.name:<17}"
+            score = 0.0
+            for result in player.results:
+                if result.result is None or result.vs_seed is None:
+                    cell = "----"
+                else:
+                    cell = f"{result.result}{result.vs_seed}"
+                    score += float(PointValueEnum.from_result(result.result))
+                row += f"{cell:^6}"
+            row += f"{score:>6.1f}"
+            print(row)
+        
+        print("----------")

@@ -25,12 +25,13 @@ def main():
             "\n1) See all players"
             "\n2) See a specific player's report"
             "\n3) See the top three players by score"
-            "\n4) quit")
+            "\n4) See an overview of all games in the tournament"
+            "\n5) Quit")
         
         match input():
             case "1":
+                print("--- PLAYER LIST ---")
                 for player in tournament.players:
-                    print("--- PLAYER LIST ---")
                     DataDisplay.display_player_brief(tournament.get_player(player))
             
             case "2":
@@ -42,13 +43,16 @@ def main():
                     report = tournament.create_report(result.seed)
                     DataDisplay.display_player_report(report)
                 else:
-                    print("This user could not be found.")
+                    print("This player could not be found.")
             
             case "3":
                 top_three = TournamentAnalyzer.get_top_three(tournament)
                 DataDisplay.display_leaderboard(top_three, tournament)
 
             case "4":
+                DataDisplay.display_round_overview(tournament)
+
+            case "5":
                 print("Exiting program...")
                 sys.exit()
 
