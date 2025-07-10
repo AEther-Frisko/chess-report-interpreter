@@ -1,7 +1,7 @@
 """Module for reading tms files and parsing the extracted data."""
 
-from tournament.result import ChessResult
-from tournament.player import ChessPlayer
+from .result import ChessResult
+from .player import ChessPlayer
 
 
 class tmsParser:
@@ -19,7 +19,6 @@ class tmsParser:
             print("ERROR: This file does not exist or cannot be found.")
         finally:
             file.close()
-        
 
     @staticmethod
     def parse_lines(lines: list[str]):
