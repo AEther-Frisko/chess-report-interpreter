@@ -60,7 +60,7 @@ class DataDisplay:
             score = 0.0
             for result in player.results:
                 if result.result is None or result.vs_seed is None:
-                    cell = "----"
+                    cell = "NA"
                 else:
                     cell = f"{result.result}{result.vs_seed}"
                     score += float(PointValueEnum.from_result(result.result))

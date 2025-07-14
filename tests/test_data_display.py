@@ -75,3 +75,16 @@ def test_round_overview_display(capsys):
     assert "1.5" in output
     assert "1.0" in output
     assert "0.5" in output
+
+def test_round_overview_blank_result(capsys):
+    p1 = ChessPlayer(1, "Person One", 100001, 2000, [ChessResult("bad data"), ChessResult("bad data")])
+    p2 = ChessPlayer(2, "Person Two", 100002, 1900, [ChessResult("L1"), ChessResult("W3")])
+    p3 = ChessPlayer(3, "Person Three", 100003, 1800, [ChessResult("D1"), ChessResult("L2")])
+    
+    players = {1: p1, 2: p2, 3: p3}
+    tournament = ChessTournament(players)
+
+    DataDisplay.display_round_overview(tournament)
+    output = capsys.readouterr().out
+
+    assert "NA" in output
