@@ -4,6 +4,8 @@ import sys
 import argparse
 from tournament.tms_parser import tmsParser
 from tournament.tournament import ChessTournament
+from tournament.data_display import DataDisplay
+from tournament.data_analyzer import TournamentAnalyzer
 
 
 def main():
@@ -22,28 +24,35 @@ def main():
             "Would you like to: "
             "\n1) See all players"
             "\n2) See a specific player's report"
-            "\n3) See the overall tournament results"
-            "\n4) quit"
-        )
-
-        match int(input()):
-            case 1:
+            "\n3) See the top three players by score"
+            "\n4) See an overview of all games in the tournament"
+            "\n5) Quit")
+        
+        match input():
+            case "1":
+                print("--- PLAYER LIST ---")
                 for player in tournament.players:
-                    print(tournament.get_player(player))
-
-            case 2:
+                    DataDisplay.display_player_brief(tournament.get_player(player))
+            
+            case "2":
                 print("Please input the player's name (last, first): ")
                 name = input()
                 result = tournament.get_player_by_name(name)
-                if result is not None:
-                    tournament.display_report(result.seed)
+                if result != None:
+                    DataDisplay.display_player_brief(result)
+                    report = tournament.create_report(result.seed)
+                    DataDisplay.display_player_report(report)
                 else:
-                    print("This user could not be found.")
+                    print("This player could not be found.")
+            
+            case "3":
+                top_three = TournamentAnalyzer.get_top_three(tournament)
+                DataDisplay.display_leaderboard(top_three, tournament)
 
-            case 3:
-                print("Oops I haven't done this yet")
+            case "4":
+                DataDisplay.display_round_overview(tournament)
 
-            case 4:
+            case "5":
                 print("Exiting program...")
                 sys.exit()
 

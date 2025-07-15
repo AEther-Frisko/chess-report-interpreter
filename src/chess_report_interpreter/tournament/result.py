@@ -31,9 +31,12 @@ class ChessResult:
         if result and result[0] in {"W", "L", "D"}:
             self.result: str = result[0]
             number_part = result[1:]
-            self.vs_seed: int = (
-                int("".join(filter(str.isdigit, number_part))) if number_part else None
-            )
+            try:
+                self.vs_seed: int = (
+                    int("".join(filter(str.isdigit, number_part))) if number_part else None
+                )
+            except ValueError:
+                self.vs_seed = None
         else:
             self.result = None
             self.vs_seed = None
