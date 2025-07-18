@@ -29,5 +29,8 @@ class ChessTournament:
         for result in player.results:
             outcome = ResultEnum.from_code(result.result)
             opponent = self.get_player(result.vs_seed)
-            results.append((outcome, opponent.name))
+            if opponent is not None:
+                results.append((outcome, opponent.name))
+            else:
+                results.append((outcome, "NA"))
         return results
