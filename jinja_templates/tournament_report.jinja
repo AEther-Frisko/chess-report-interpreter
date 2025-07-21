@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Chess Tournament Report </title>
+    </head>
+
+    <body>
+        <h1>Tournament Report</h1>
+        <h2>Top 3 Players</h2>
+        <ol>
+            {% for seed, score in top_three %}
+                <li>
+                    {{players[seed].name}}<br>
+                    Score:  {{score}}
+                </li>
+            {% endfor %}
+        </ol>
+
+        <h2>Round Overview</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                {% for round in range(total_rounds) %}
+                    <th>Round {{round + 1}}</th>
+                {% endfor %}
+            </tr>
+            {% for player in players %}
+                <tr>
+                    <td>{{players[player].name}}</td>
+                    {% for result in players[player].results %}
+                        <td>{{result.result}}{{result.vs_seed}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+
+        <h2>Player Reports</h2>
+        {% for player in players %}
+            <h3><a href="https://www.chess.ca/en/ratings/p/?id={{players[player].cfc_id}}">{{players[player].name}}</a></h3>
+            <p>
+                CFC ID:     {{players[player].cfc_id}}<br>
+                CFC Rating: {{players[player].cfc_rating}}
+            </p>
+            <table>
+                <tr>
+                    <th>Round</th>
+                    <th>Opponent</th>
+                    <th>Results</th>
+                </tr>
+                {% for result, opponent in all_reports[player - 1] %}
+                    <tr>
+                        <td>{{all_reports[player - 1].index((result, opponent)) + 1}}</td>
+                        <td>{{opponent}}</td>
+                        <td>{{result}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    </body>
+</html>

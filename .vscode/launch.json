@@ -14,6 +14,17 @@
             "env": {
                 "PYTHONPATH": ".:${workspaceFolder}/src:${workspaceFolder}/src/chess_report_interpreter"
             }
+        },
+        {
+            "name": "Python Debugger: Generate Report",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/chess_report_interpreter/generate_report.py",
+            "args": [ "--tms", "data/data.tms.sample" ],
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": ".:${workspaceFolder}/src:${workspaceFolder}/src/chess_report_interpreter"
+            }
         }
     ]
 }
