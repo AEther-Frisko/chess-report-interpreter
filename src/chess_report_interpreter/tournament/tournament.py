@@ -7,9 +7,21 @@ from .player import ChessPlayer
 class ChessTournament:
     """A class representing all the results of a chess tournament."""
 
-    def __init__(self, players: dict[int, ChessPlayer]):
+    def __init__(self, players: dict[int, ChessPlayer], data: list[str] | None):
         """Initializes a tournament instance."""
         self.players = players
+        
+        if data is not None:
+            self.event = data[0]
+            self.province = data[1]
+            self.ref_num = data[2]
+            self.pairing = data[3]
+            self.end_date = data[4]
+            self.player_total = data[5]
+            self.round_total = data[6]
+            self.type = data[7]
+            self.org_id = data[8]
+            self.arb_id = data[9]
 
     def get_player(self, seed: int):
         """Returns a Player via the seed value."""

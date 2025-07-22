@@ -28,7 +28,7 @@ def test_valid_top_three():
         3 : ChessPlayer(3, "Third, Guy", 100003, 1980, [ChessResult("W4"), ChessResult("L1"), ChessResult("L2")]),
         4 : ChessPlayer(4, "Loser, Dude", 100000, 1970, [ChessResult("L3"), ChessResult("L2"), ChessResult("L1")])
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
     top_three = TournamentAnalyzer.get_top_three(tournament)
 
     assert top_three[0][0] == 1
@@ -43,7 +43,7 @@ def test_top_three_two_players():
         1 : ChessPlayer(1, "Winner, Guy", 111111, 1999, [ChessResult("W2")]),
         2 : ChessPlayer(2, "Loser, Dude", 100000, 1970, [ChessResult("L1")])
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
     top_three = TournamentAnalyzer.get_top_three(tournament)
 
     assert top_three[0][0] == 1
@@ -58,7 +58,7 @@ def test_top_three_tie():
         3 : ChessPlayer(3, "Third, Guy", 100003, 1980, [ChessResult("W4"), ChessResult("L1"), ChessResult("D2")]),
         4 : ChessPlayer(4, "Loser, Dude", 100000, 1970, [ChessResult("L3"), ChessResult("L2"), ChessResult("L1")])
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
     top_three = TournamentAnalyzer.get_top_three(tournament)
 
     assert top_three[0][0] == 1

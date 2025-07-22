@@ -2,24 +2,12 @@
 
 from .result import ChessResult
 from .player import ChessPlayer
+from .parser import Parser
 
 
-class tmsParser:
+class tmsParser(Parser):
     """A class handling the parsing of tms files and their data."""
-
-    @staticmethod
-    def read_file(filename: str):
-        """Reads all the lines of a file and returns them as a list."""
-        lines = list()
-        try:
-            file = open(filename)
-            lines = file.readlines()
-            file.close()
-            return lines
-        except FileNotFoundError:
-            print("ERROR: This file does not exist or cannot be found.")
-        
-
+    
     @staticmethod
     def parse_lines(lines: list[str]):
         """Converts a list of lines into a dictionary of Players."""

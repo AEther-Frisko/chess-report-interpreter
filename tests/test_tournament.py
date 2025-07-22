@@ -12,7 +12,7 @@ def test_valid_initialization():
         2 : p2,
         3 : p3
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
 
     assert tournament.players == players
 
@@ -25,7 +25,7 @@ def test_get_valid_seed():
         2 : p2,
         3 : p3
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
     retrieved = tournament.get_player(2)
 
     assert retrieved == p2
@@ -39,7 +39,7 @@ def test_get_invalid_seed():
         2 : p2,
         3 : p3
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
     retrieved = tournament.get_player(10)
 
     assert retrieved is None
@@ -53,7 +53,7 @@ def test_get_proper_name():
         2 : p2,
         3 : p3
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
     retrieved = tournament.get_player_by_name("Last, Guy")
 
     assert retrieved == p3
@@ -67,7 +67,7 @@ def test_get_lowercase_name():
         2 : p2,
         3 : p3
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
     retrieved = tournament.get_player_by_name("guy, one")
 
     assert retrieved == p1
@@ -81,7 +81,7 @@ def test_get_invalid_name():
         2 : p2,
         3 : p3
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
     retrieved = tournament.get_player_by_name("not on this list")
 
     assert retrieved is None
@@ -95,7 +95,7 @@ def test_create_valid_report():
         2 : p2,
         3 : p3
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
     report = tournament.create_report(1)
 
     assert report[0][0].value is ResultEnum.WIN.value
@@ -112,7 +112,7 @@ def test_no_opponent_name():
         2 : p2,
         3 : p3
     }
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
     report = tournament.create_report(1)
 
     assert report[1][0].value is ResultEnum.LOSS.value

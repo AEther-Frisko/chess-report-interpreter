@@ -19,6 +19,8 @@ class PointValueEnum(Enum):
 
 
 class TournamentAnalyzer:
+    """Class for analyzing tournament data."""
+
     def get_top_three(data: ChessTournament):
         """Determines and orders the top three players in the tournament data."""
 
