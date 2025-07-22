@@ -5,26 +5,26 @@
     </head>
 
     <body>
-        <h1>Report for {{event}}</h1>
+        <h1>Report for {{info["Event"]}}</h1>
 
         <table>
             <tr>
                 <th>Event</th>
                 <th>End Date</th>
-                <th>Type</th>
+                <th>Format</th>
                 <th>Pairings</th>
                 <th>Province</th>
                 <th>Organizer</th>
                 <th>Arbiter</th>
             </tr>
             <tr>
-                <td>{{event}}</td>
-                <td>{{end_date}}</td>
-                <td>{{type}}</td>
-                <td>{{pairing}}</td>
-                <td>{{province}}</td>
-                <td>{{organizer}}</td>
-                <td>{{arbiter}}</td>
+                <td>{{info["Event"]}}</td>
+                <td>{{info["End Date"]}}</td>
+                <td>{{info["Format"]}}</td>
+                <td>{{info["Pairings"]}}</td>
+                <td>{{info["Province"]}}</td>
+                <td><a href="https://www.chess.ca/en/ratings/p/?id={{info["Organizer"]}}">{{info["Organizer"]}}</a></td>
+                <td><a href="https://www.chess.ca/en/ratings/p/?id={{info["Arbiter"]}}">{{info["Arbiter"]}}</a></td>
             </tr>
         </table>
 
@@ -38,23 +38,45 @@
             {% endfor %}
         </ol>
 
-        <h2>Round Overview</h2>
-        <table>
-            <tr>
-                <th>Name</th>
-                {% for round in range(total_rounds) %}
-                    <th>Round {{round + 1}}</th>
-                {% endfor %}
-            </tr>
-            {% for player in players %}
+        {% if info["Pairings"] == "Round Robin" %}
+            <h2>Tournament Crosstable</h2>
+            <table>
                 <tr>
-                    <td>{{players[player].name}}</td>
-                    {% for result in players[player].results %}
-                        <td>{{result.result}}{{result.vs_seed}}</td>
+                    <th>Player</th>
+                    {% for opponent in players %}
+                        <th>{{opponent}}</th>
                     {% endfor %}
                 </tr>
-            {% endfor %}
-        </table>
+                {% for player in players %}
+                    <tr>
+                        <td>{{player}}. {{players[player].name}}</td>
+                        {% for opponent in players %}
+                            <td>
+                                {{result_lookup[player][opponent] if result_lookup[player][opponent] is defined else 'X'}}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% elif info["Pairings"] == "Swiss" %}
+            <h2>Tournament Overview</h2>
+            <table>
+                <tr>
+                    <th>Player</th>
+                    {% for round in range(info["Round Total"]) %}
+                        <th>R{{round + 1}}</th>
+                    {% endfor %}
+                </tr>
+                {% for player in players %}
+                    <tr>
+                        <td>{{player}}. {{players[player].name}}</td>
+                        {% for result in players[player].results %}
+                            <td>{{result.result}}{{result.vs_seed}}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
 
         <h2>Player Reports</h2>
         {% for player in players %}

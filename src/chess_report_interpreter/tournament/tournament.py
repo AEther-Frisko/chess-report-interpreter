@@ -1,7 +1,40 @@
-"""Module for compiling all player data for a tournament."""
+"""Module for compiling all tournament data."""
 
+from enum import Enum
 from .result import ResultEnum
 from .player import ChessPlayer
+
+
+class PairingEnum(Enum):
+    """An enumeration representing possible pairing styles in a tournament."""
+
+    SWISS = "Swiss"
+    RR = "Round Robin"
+
+    @classmethod
+    def from_code(cls, code: str):
+        """Converts a single character to the corresponding PairingEnum."""
+        mapping = {"S": cls.SWISS, "R": cls.RR}
+        return mapping.get(code)
+    
+    def __str__(self):
+        return self.value
+
+
+class FormatEnum(Enum):
+    """An enumeration representing possible formats of a tournament."""
+
+    ACTIVE = "Active"
+    REGULAR = "Regular"
+
+    @classmethod
+    def from_code(cls, code: str):
+        """Converts a single character to the corresponding FormatEnum."""
+        mapping = {"A": cls.ACTIVE, "R": cls.REGULAR}
+        return mapping.get(code)
+    
+    def __str__(self):
+        return self.value
 
 
 class ChessTournament:
@@ -12,16 +45,18 @@ class ChessTournament:
         self.players = players
         
         if data is not None:
-            self.event = data[0]
-            self.province = data[1]
-            self.ref_num = data[2]
-            self.pairing = data[3]
-            self.end_date = data[4]
-            self.player_total = int(data[5])
-            self.round_total = int(data[6])
-            self.type = data[7]
-            self.org_id = int(data[8])
-            self.arb_id = int(data[9])
+            self.info = {
+                "Event": data[0],
+                "Province": data[1],
+                "Reference Number": data[2],
+                "Pairings": PairingEnum.from_code(data[3]).value,
+                "End Date": data[4],
+                "Player Total": int(data[5]),
+                "Round Total": int(data[6]),
+                "Format": FormatEnum.from_code(data[7]).value,
+                "Organizer": int(data[8]),
+                "Arbiter": int(data[9])
+            }
 
     def get_player(self, seed: int):
         """Returns a Player via the seed value."""

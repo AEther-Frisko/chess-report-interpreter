@@ -24,30 +24,26 @@ def main():
     
     top_three = TournamentAnalyzer.get_top_three(tournament)
 
-    total_rounds = max(len(p.results) for p in list(tournament.players.values()))
-
     all_reports = []
     for player in tournament.players:
         report = tournament.create_report(player)
         all_reports.append(report)
 
+    result_lookup = {}
+    for seed, player in tournament.players.items():
+        result_lookup[seed] = {}
+        for result in player.results:
+            result_lookup[seed][result.vs_seed] = result.result
+
     env = Environment(loader = FileSystemLoader("./jinja_templates"))
     template = env.get_template("tournament_report.jinja")
 
-    # definitely want to condense this if possible?
-    # also need to replace some of these with proper outputs instead of just ids.
     with open("./jinja_renders/tournament_report.html", "w") as f:
         print(template.render(
-            event = tournament.event,
-            end_date = tournament.end_date,
-            type = tournament.type,
-            pairing = tournament.pairing,
-            province = tournament.province,
-            organizer = tournament.org_id,
-            arbiter = tournament.arb_id,
-            players = tournament.players, 
-            top_three = top_three, 
-            total_rounds = total_rounds,
+            info = tournament.info,
+            players = tournament.players,
+            result_lookup = result_lookup, 
+            top_three = top_three,
             all_reports = all_reports
             ), file = f)
 
