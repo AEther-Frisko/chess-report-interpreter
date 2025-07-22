@@ -102,3 +102,18 @@ def test_create_valid_report():
     assert report[0][1] == "Guy, Number Two"
     assert report[1][0].value is ResultEnum.WIN.value
     assert report[1][1] == "Last, Guy"
+
+def test_no_opponent_name():
+    p1 = ChessPlayer(1, "Guy, One", 100000, 1990, [ChessResult("W2"), ChessResult("L0")])
+    p2 = ChessPlayer(2, "Guy, Number Two", 100001, 1980, [ChessResult("L1"), ChessResult("W3")])
+    p3 = ChessPlayer(3, "Last, Guy", 100002, 1970, [ChessResult("L2"), ChessResult("L0")])
+    players = {
+        1 : p1,
+        2 : p2,
+        3 : p3
+    }
+    tournament = ChessTournament(players)
+    report = tournament.create_report(1)
+
+    assert report[1][0].value is ResultEnum.LOSS.value
+    assert report[1][1] == "NA"

@@ -32,6 +32,15 @@ class tmsParser:
             cfcRating = int(data[3])
             results = data[4:]
             del results[-1]
+            
+            # converts into typical ChessResult format if using Round Robin.
+            for res in results:
+                if res[0] in {"1", "=", "0"}:
+                    mapping = {"1": "W", "0": "L", "=":"D"}
+                    result = mapping.get(res[0])
+                    vs_seed = results.index(res) + 1
+                    results[results.index(res)] = result + str(vs_seed)
+
             parsed_results = [ChessResult(res) for res in results]
 
             p = ChessPlayer(seed, name, cfcID, cfcRating, parsed_results)

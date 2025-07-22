@@ -4,7 +4,7 @@ This is a Python program designed to parse tournament data from .tms and .ctr fi
 
 ## How to Format TMS Files
 
-the included data.tms.sample file demonstrates how the format looks in an actual file. As a more general example, the expected format is as follows:
+the included swiss_data.tms.sample and rr_data.tms.sample files demonstrates how the format looks in an actual file. As a more general example, the expected format is as follows:
 ```
 [seed]	[player name]	[cfc ID]	[cfc Rating]	[results for each round]
 ```
@@ -18,7 +18,7 @@ Each piece of data is tab-delimited.
 - Example:  W10  D2  L5 (or 1   =   0)
 
 ## How to Format CTR Files
-the included data.ctr.sample file demonstrates how the format looks in an actual file. As a more general example, the expected format is as follows:
+the included swiss_data.ctr.sample and rr_data.ctr.sample files demonstrates how the format looks in an actual file. As a more general example, the expected format is as follows:
 ```
 "event","province","reference number","pairings","end date","no. of players","no. of rounds","type","organizer id","arbiter id"
 "player id"
