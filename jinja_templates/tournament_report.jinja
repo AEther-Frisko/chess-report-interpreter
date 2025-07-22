@@ -5,7 +5,29 @@
     </head>
 
     <body>
-        <h1>Tournament Report</h1>
+        <h1>Report for {{event}}</h1>
+
+        <table>
+            <tr>
+                <th>Event</th>
+                <th>End Date</th>
+                <th>Type</th>
+                <th>Pairings</th>
+                <th>Province</th>
+                <th>Organizer</th>
+                <th>Arbiter</th>
+            </tr>
+            <tr>
+                <td>{{event}}</td>
+                <td>{{end_date}}</td>
+                <td>{{type}}</td>
+                <td>{{pairing}}</td>
+                <td>{{province}}</td>
+                <td>{{organizer}}</td>
+                <td>{{arbiter}}</td>
+            </tr>
+        </table>
+
         <h2>Top 3 Players</h2>
         <ol>
             {% for seed, score in top_three %}

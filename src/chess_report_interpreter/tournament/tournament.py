@@ -17,11 +17,11 @@ class ChessTournament:
             self.ref_num = data[2]
             self.pairing = data[3]
             self.end_date = data[4]
-            self.player_total = data[5]
-            self.round_total = data[6]
+            self.player_total = int(data[5])
+            self.round_total = int(data[6])
             self.type = data[7]
-            self.org_id = data[8]
-            self.arb_id = data[9]
+            self.org_id = int(data[8])
+            self.arb_id = int(data[9])
 
     def get_player(self, seed: int):
         """Returns a Player via the seed value."""
