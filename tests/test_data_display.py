@@ -37,7 +37,7 @@ def test_player_report_display(capsys):
 def test_leaderboard_display(capsys):
     p1 = ChessPlayer(1, "Guy 1", 12345, 2000, [])
     p2 = ChessPlayer(2, "Guy 2", 23456, 1900, [])
-    tournament = ChessTournament({1: p1, 2: p2})
+    tournament = ChessTournament({1: p1, 2: p2}, None)
     top_players = [(1, 2.5), (2, 2.0)]
 
     DataDisplay.display_leaderboard(top_players, tournament)
@@ -56,7 +56,7 @@ def test_round_overview_display(capsys):
     p3 = ChessPlayer(3, "Person Three", 100003, 1800, [ChessResult("D1"), ChessResult("L2")])
     
     players = {1: p1, 2: p2, 3: p3}
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
 
     DataDisplay.display_round_overview(tournament)
     output = capsys.readouterr().out
@@ -82,7 +82,7 @@ def test_round_overview_blank_result(capsys):
     p3 = ChessPlayer(3, "Person Three", 100003, 1800, [ChessResult("D1"), ChessResult("L2")])
     
     players = {1: p1, 2: p2, 3: p3}
-    tournament = ChessTournament(players)
+    tournament = ChessTournament(players, None)
 
     DataDisplay.display_round_overview(tournament)
     output = capsys.readouterr().out

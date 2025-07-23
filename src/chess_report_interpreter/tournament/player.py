@@ -15,6 +15,11 @@ class ChessPlayer:
         results: list[ChessResult],
     ):
         """Initializes a Player instance."""
+        # cleans up invalid results
+        for res in results:
+            if res.result is None:
+                del results[results.index(res)]
+
         self.seed = seed_no
         self.name = name
         self.cfc_id = cfc_id

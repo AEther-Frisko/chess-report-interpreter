@@ -7,6 +7,8 @@ from .tournament import ChessTournament
 
 
 class DataDisplay:
+    """Class for printing chess data to the terminal."""
+
     def display_leaderboard(top_players: list[tuple[int, float]], tournament: ChessTournament):
         """Displays the top three players of the tournament, according to their win/loss/draw scores."""
         

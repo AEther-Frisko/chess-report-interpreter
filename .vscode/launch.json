@@ -9,7 +9,7 @@
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/src/chess_report_interpreter/main.py",
-            "args": [ "--tms", "data/data.tms.sample" ],
+            "args": [ "--tms", "data/swiss_data.tms.sample" ],
             "console": "integratedTerminal",
             "env": {
                 "PYTHONPATH": ".:${workspaceFolder}/src:${workspaceFolder}/src/chess_report_interpreter"
@@ -20,7 +20,7 @@
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/src/chess_report_interpreter/generate_report.py",
-            "args": [ "--tms", "data/data.tms.sample" ],
+            "args": [ "--tms", "data/swiss_data.tms.sample", "--ctr", "data/swiss_data.ctr.sample" ],
             "console": "integratedTerminal",
             "env": {
                 "PYTHONPATH": ".:${workspaceFolder}/src:${workspaceFolder}/src/chess_report_interpreter"
