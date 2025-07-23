@@ -2,12 +2,16 @@
 <html>
     <head>
         <title> Chess Tournament Report </title>
+        <link rel="stylesheet" href="../static/styles.css">
     </head>
 
     <body>
-        <h1>Report for {{info["Event"]}}</h1>
+        <header>
+            <h1>Report for {{info["Event"]}}</h1>
+        </header>
 
-        <table>
+        <section>
+        <table class="centered">
             <tr>
                 <th>Event</th>
                 <th>End Date</th>
@@ -27,17 +31,21 @@
                 <td><a href="https://www.chess.ca/en/ratings/p/?id={{info["Arbiter"]}}">{{info["Arbiter"]}}</a></td>
             </tr>
         </table>
+        </section>
 
+        <section>
         <h2>Top 3 Players</h2>
         <ol>
             {% for seed, score in top_three %}
                 <li>
-                    {{players[seed].name}}<br>
+                    <b>{{players[seed].name}}</b><br>
                     Score:  {{score}}
                 </li>
             {% endfor %}
         </ol>
+        </section>
 
+        <section>
         {% if info["Pairings"] == "Round Robin" %}
             <h2>Tournament Crosstable</h2>
             <table>
@@ -77,13 +85,15 @@
                 {% endfor %}
             </table>
         {% endif %}
+        </section>
 
+        <section class="reports">
         <h2>Player Reports</h2>
         {% for player in players %}
             <h3><a href="https://www.chess.ca/en/ratings/p/?id={{players[player].cfc_id}}">{{players[player].name}}</a></h3>
             <p>
-                CFC ID:     {{players[player].cfc_id}}<br>
-                CFC Rating: {{players[player].cfc_rating}}
+                <b>CFC ID:</b>     {{players[player].cfc_id}}<br>
+                <b>CFC Rating:</b> {{players[player].cfc_rating}}
             </p>
             <table>
                 <tr>
@@ -100,5 +110,10 @@
                 {% endfor %}
             </table>
         {% endfor %}
+        </section>
+
+        <footer>
+            <p>{{info["Event"]}} Report, {{info["End Date"]}}</p>
+        </footer>
     </body>
 </html>
