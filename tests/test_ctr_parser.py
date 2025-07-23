@@ -7,7 +7,7 @@ def test_parse_data_valid():
     data = ctrParser.parse_tournament_data(line)
     tournament = ChessTournament({}, data)
 
-    assert tournament.info["Event"] == "Example Tournament"
+    assert tournament.info["Event"] == "Example Swiss Tournament"
     assert tournament.info["Province"] == "ON"
     assert tournament.info["Reference Number"] == ""
     assert tournament.info["Pairings"] == "Swiss"

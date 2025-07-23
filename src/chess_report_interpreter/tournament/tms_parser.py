@@ -19,11 +19,12 @@ class tmsParser(Parser):
             cfcID = int(data[2])
             cfcRating = int(data[3])
             results = data[4:]
-            del results[-1]
+            if results[-1] == "\n":
+                del results[-1]
             
             # converts into typical ChessResult format if using Round Robin.
             for res in results:
-                if res[0] in {"1", "=", "0"}:
+                if res != "" and res[0] in {"1", "=", "0"}:
                     mapping = {"1": "W", "0": "L", "=":"D"}
                     result = mapping.get(res[0])
                     vs_seed = results.index(res) + 1

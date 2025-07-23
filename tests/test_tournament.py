@@ -1,6 +1,8 @@
 from chess_report_interpreter.tournament.player import ChessPlayer
 from chess_report_interpreter.tournament.result import ChessResult, ResultEnum
 from chess_report_interpreter.tournament.tournament import ChessTournament
+from chess_report_interpreter.tournament.tournament import PairingEnum
+from chess_report_interpreter.tournament.tournament import FormatEnum
 
 
 def test_valid_initialization():
@@ -117,3 +119,13 @@ def test_no_opponent_name():
 
     assert report[1][0].value is ResultEnum.LOSS.value
     assert report[1][1] == "NA"
+
+def test_display_pairing_enum():
+    enum = str(PairingEnum.SWISS)
+
+    assert enum is PairingEnum.SWISS.value
+
+def test_display_format_enum():
+    enum = str(FormatEnum.ACTIVE)
+
+    assert enum is FormatEnum.ACTIVE.value
