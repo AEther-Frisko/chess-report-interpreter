@@ -96,9 +96,14 @@ tr:nth-child(even) {
 }
 
 .reports {
-    column-count: 2;
+    columns: 2;
 }
 
-h2 {
+h2.reports {
     column-span: all;
+}
+
+#wrapper {
+    display: flex;
+    justify-content: space-around;
 }

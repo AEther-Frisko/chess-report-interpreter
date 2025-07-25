@@ -12,9 +12,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--tms", help="The name of the tms file to read", required=True)
     parser.add_argument("--ctr", help="The name of the ctr file to read", required=True)
+    parser.add_argument("--rtg", help="Optional rating threshold for \"Top Player under X\"")
     args = parser.parse_args()
     tms_file = args.tms
     ctr_file = args.ctr
+    max_rating = args.rtg
 
     lines = tmsParser.read_file(tms_file)
     players: dict = tmsParser.parse_lines(lines)
@@ -23,6 +25,14 @@ def main():
     tournament = ChessTournament(players, data)
     
     top_three = TournamentAnalyzer.get_top_three(tournament)
+
+    highest = {
+        "Score": 0.0,
+        "Player": None,
+        "Max Rating": None
+    }
+    if max_rating is not None:
+        highest.update(TournamentAnalyzer.get_top_under_rating(tournament, max_rating))
 
     all_reports = []
     for player in tournament.players:
@@ -44,6 +54,7 @@ def main():
             players = tournament.players,
             result_lookup = result_lookup, 
             top_three = top_three,
+            highest = highest,
             all_reports = all_reports
             ), file = f)
 

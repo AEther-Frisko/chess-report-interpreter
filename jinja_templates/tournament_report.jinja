@@ -33,16 +33,33 @@
         </table>
         </section>
 
-        <section>
+        <section id="wrapper">
+        <div>
         <h2>Top 3 Players</h2>
         <ol>
             {% for seed, score in top_three %}
                 <li>
-                    <b>{{players[seed].name}}</b><br>
-                    Score:  {{score}}
+                    <b><a href="https://www.chess.ca/en/ratings/p/?id={{players[seed].cfc_id}}">{{players[seed].name}}</a></b><br>
+                    <b>CFC Rating:</b>  {{players[seed].cfc_rating}}<br>
+                    <b>Score:</b>       {{score}}
                 </li>
             {% endfor %}
         </ol>
+        </div>
+        <div>
+        {% if highest["Max Rating"] is not none %}
+            <h2>Top Player Under {{highest["Max Rating"]}}</h2>
+            {% if highest["Player"] is not none %}
+                <h3><a href="https://www.chess.ca/en/ratings/p/?id={{highest["Player"].cfc_id}}">{{highest["Player"].name}}</a></h3>
+                <p>
+                    <b>CFC Rating:</b>  {{highest["Player"].cfc_rating}}<br>
+                    <b>Score:</b>       {{highest["Score"]}}
+                </p>
+            {% else %}
+                <p>No applicable player found.</p>
+            {% endif %}
+        {% endif %}
+        </div>
         </section>
 
         <section>
@@ -88,7 +105,7 @@
         </section>
 
         <section class="reports">
-        <h2>Player Reports</h2>
+        <h2 class="reports">Player Reports</h2>
         {% for player in players %}
             <h3><a href="https://www.chess.ca/en/ratings/p/?id={{players[player].cfc_id}}">{{players[player].name}}</a></h3>
             <p>

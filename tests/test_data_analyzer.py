@@ -67,3 +67,17 @@ def test_top_three_tie():
     assert top_three[1][1] == 1.5
     assert top_three[2][0] == 3
     assert top_three[2][1] == 1.5
+
+def test_highest_under_rating():
+    players = {
+        1 : ChessPlayer(1, "Top, Player", 123456, 1990, [ChessResult("W2"), ChessResult("W3"), ChessResult("W4")]),
+        2 : ChessPlayer(2, "Number, Two", 122222, 1985, [ChessResult("L1"), ChessResult("W4"), ChessResult("D3")]),
+        3 : ChessPlayer(3, "Third, Guy", 100003, 1980, [ChessResult("W4"), ChessResult("L1"), ChessResult("D2")]),
+        4 : ChessPlayer(4, "Loser, Dude", 100000, 1970, [ChessResult("L3"), ChessResult("L2"), ChessResult("L1")])
+    }
+    tournament = ChessTournament(players, None)
+    highest = TournamentAnalyzer.get_top_under_rating(tournament, 1982)
+
+    assert highest["Score"] == 1.5
+    assert highest["Player"].name == "Third, Guy"
+    assert highest["Max Rating"] == 1982

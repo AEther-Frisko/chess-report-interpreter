@@ -118,7 +118,7 @@ def test_no_opponent_name():
     report = tournament.create_report(1)
 
     assert report[1][0].value is ResultEnum.LOSS.value
-    assert report[1][1] == "NA"
+    assert report[1][1] == "BYE"
 
 def test_display_pairing_enum():
     enum = str(PairingEnum.SWISS)
