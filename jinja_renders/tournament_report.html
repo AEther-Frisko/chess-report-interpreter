@@ -2,12 +2,16 @@
 <html>
     <head>
         <title> Chess Tournament Report </title>
+        <link rel="stylesheet" href="../static/styles.css">
     </head>
 
     <body>
-        <h1>Report for Example Round Robin Tournament</h1>
+        <header>
+            <h1>Report for Example Swiss Tournament</h1>
+        </header>
 
-        <table>
+        <section>
+        <table class="centered">
             <tr>
                 <th>Event</th>
                 <th>End Date</th>
@@ -18,145 +22,109 @@
                 <th>Arbiter</th>
             </tr>
             <tr>
-                <td>Example Round Robin Tournament</td>
+                <td>Example Swiss Tournament</td>
                 <td>2025/07/21</td>
-                <td>Regular</td>
-                <td>Round Robin</td>
+                <td>Active</td>
+                <td>Swiss</td>
                 <td>ON</td>
                 <td><a href="https://www.chess.ca/en/ratings/p/?id=111111">111111</a></td>
-                <td><a href="https://www.chess.ca/en/ratings/p/?id=111112">111112</a></td>
+                <td><a href="https://www.chess.ca/en/ratings/p/?id=111111">111111</a></td>
             </tr>
         </table>
+        </section>
 
+        <section>
         <h2>Top 3 Players</h2>
         <ol>
             
                 <li>
-                    Deleon, Zach<br>
+                    <b>Deleon, Zach</b><br>
                     Score:  2.5
                 </li>
             
                 <li>
-                    Walsh, Bruce<br>
+                    <b>Walsh, Bruce</b><br>
                     Score:  2.5
                 </li>
             
                 <li>
-                    Crane, Vincent<br>
+                    <b>Crane, Vincent</b><br>
                     Score:  1.0
                 </li>
             
         </ol>
+        </section>
 
+        <section>
         
-            <h2>Tournament Crosstable</h2>
+            <h2>Tournament Overview</h2>
             <table>
                 <tr>
                     <th>Player</th>
                     
-                        <th>1</th>
+                        <th>R1</th>
                     
-                        <th>2</th>
+                        <th>R2</th>
                     
-                        <th>3</th>
-                    
-                        <th>4</th>
+                        <th>R3</th>
                     
                 </tr>
                 
                     <tr>
                         <td>1. Deleon, Zach</td>
                         
-                            <td>
-                                X
-                            </td>
+                            <td>D2</td>
                         
-                            <td>
-                                D
-                            </td>
+                            <td>W3</td>
                         
-                            <td>
-                                W
-                            </td>
-                        
-                            <td>
-                                W
-                            </td>
+                            <td>W4</td>
                         
                     </tr>
                 
                     <tr>
                         <td>2. Walsh, Bruce</td>
                         
-                            <td>
-                                D
-                            </td>
+                            <td>D1</td>
                         
-                            <td>
-                                X
-                            </td>
+                            <td>W4</td>
                         
-                            <td>
-                                W
-                            </td>
-                        
-                            <td>
-                                W
-                            </td>
+                            <td>W3</td>
                         
                     </tr>
                 
                     <tr>
                         <td>3. Crane, Vincent</td>
                         
-                            <td>
-                                L
-                            </td>
+                            <td>W4</td>
                         
-                            <td>
-                                L
-                            </td>
+                            <td>L1</td>
                         
-                            <td>
-                                X
-                            </td>
-                        
-                            <td>
-                                W
-                            </td>
+                            <td>L2</td>
                         
                     </tr>
                 
                     <tr>
                         <td>4. Van Damme, Frances</td>
                         
-                            <td>
-                                L
-                            </td>
+                            <td>L3</td>
                         
-                            <td>
-                                L
-                            </td>
+                            <td>L2</td>
                         
-                            <td>
-                                L
-                            </td>
-                        
-                            <td>
-                                X
-                            </td>
+                            <td>L1</td>
                         
                     </tr>
                 
             </table>
         
+        </section>
 
+        <section class="reports">
         <h2>Player Reports</h2>
         
             <h3><a href="https://www.chess.ca/en/ratings/p/?id=100000">Deleon, Zach</a></h3>
             <p>
-                CFC ID:     100000<br>
-                CFC Rating: 1970
+                <b>CFC ID:</b>     100000<br>
+                <b>CFC Rating:</b> 1970
             </p>
             <table>
                 <tr>
@@ -187,8 +155,8 @@
         
             <h3><a href="https://www.chess.ca/en/ratings/p/?id=100001">Walsh, Bruce</a></h3>
             <p>
-                CFC ID:     100001<br>
-                CFC Rating: 1935
+                <b>CFC ID:</b>     100001<br>
+                <b>CFC Rating:</b> 1935
             </p>
             <table>
                 <tr>
@@ -205,13 +173,13 @@
                 
                     <tr>
                         <td>2</td>
-                        <td>Crane, Vincent</td>
+                        <td>Van Damme, Frances</td>
                         <td>Win</td>
                     </tr>
                 
                     <tr>
                         <td>3</td>
-                        <td>Van Damme, Frances</td>
+                        <td>Crane, Vincent</td>
                         <td>Win</td>
                     </tr>
                 
@@ -219,8 +187,8 @@
         
             <h3><a href="https://www.chess.ca/en/ratings/p/?id=100002">Crane, Vincent</a></h3>
             <p>
-                CFC ID:     100002<br>
-                CFC Rating: 1930
+                <b>CFC ID:</b>     100002<br>
+                <b>CFC Rating:</b> 1930
             </p>
             <table>
                 <tr>
@@ -231,28 +199,28 @@
                 
                     <tr>
                         <td>1</td>
+                        <td>Van Damme, Frances</td>
+                        <td>Win</td>
+                    </tr>
+                
+                    <tr>
+                        <td>2</td>
                         <td>Deleon, Zach</td>
                         <td>Loss</td>
                     </tr>
                 
                     <tr>
-                        <td>2</td>
+                        <td>3</td>
                         <td>Walsh, Bruce</td>
                         <td>Loss</td>
-                    </tr>
-                
-                    <tr>
-                        <td>3</td>
-                        <td>Van Damme, Frances</td>
-                        <td>Win</td>
                     </tr>
                 
             </table>
         
             <h3><a href="https://www.chess.ca/en/ratings/p/?id=100003">Van Damme, Frances</a></h3>
             <p>
-                CFC ID:     100003<br>
-                CFC Rating: 1890
+                <b>CFC ID:</b>     100003<br>
+                <b>CFC Rating:</b> 1890
             </p>
             <table>
                 <tr>
@@ -263,7 +231,7 @@
                 
                     <tr>
                         <td>1</td>
-                        <td>Deleon, Zach</td>
+                        <td>Crane, Vincent</td>
                         <td>Loss</td>
                     </tr>
                 
@@ -275,11 +243,16 @@
                 
                     <tr>
                         <td>3</td>
-                        <td>Crane, Vincent</td>
+                        <td>Deleon, Zach</td>
                         <td>Loss</td>
                     </tr>
                 
             </table>
         
+        </section>
+
+        <footer>
+            <p>Example Swiss Tournament Report, 2025/07/21</p>
+        </footer>
     </body>
 </html>

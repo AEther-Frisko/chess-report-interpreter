@@ -79,5 +79,5 @@ class ChessTournament:
             if opponent is not None:
                 results.append((outcome, opponent.name))
             else:
-                results.append((outcome, "NA"))
+                results.append((outcome, "BYE"))
         return results

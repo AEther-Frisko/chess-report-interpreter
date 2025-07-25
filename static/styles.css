@@ -1,0 +1,104 @@
+:root {
+    --background: #424e71;
+    --background2: #dde5ff;
+    --header: #293558;
+    --table_header: #7884a7;
+    --table_main: #c8d3f3;
+    --link: #c0772f;
+    --link_hover: #9d330c;
+    --text-dark: #161c31;
+}
+
+body {
+    margin: auto;
+    width: 50%;
+    box-shadow: 0px 20px 20px black;
+    background-color: var(--background);
+    color: var(--header);
+}
+
+@media screen and (max-width: 1500px) {
+  body {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  body {
+    width: 100%;
+  }
+}
+
+header, footer {
+    background-color: var(--header);
+    text-align: center;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--background2);
+}
+
+section {
+    background-color: var(--background2);
+    padding: 20px;
+    margin: 20px;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a:link {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link_hover);
+    text-decoration: underline;
+}
+
+a:active {
+    color: var(--link_hover);
+    text-decoration: underline;
+}
+
+li {
+    margin: 20px;
+    font-size: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    word-break: break-word;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: var(--table_header);
+    color: var(--text-dark)
+}
+
+td, th {
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: var(--table_main);
+}
+
+.reports {
+    column-count: 2;
+}
+
+h2 {
+    column-span: all;
+}
